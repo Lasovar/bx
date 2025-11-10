@@ -3,12 +3,15 @@ project "bx"
     language "C++"
     cppdialect "C++17"
 
+    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
     files {
         "src/**.cpp",
     }
 
     removefiles {
-        "amalgamated.cpp"  -- This file causes duplicates if included elsewhere
+        "src/amalgamated.cpp"  -- This file causes duplicates if included elsewhere
     }
 
     includedirs {
